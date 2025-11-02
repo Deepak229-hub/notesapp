@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import LeftContent from './components/LeftContent'
 import RightContent from './components/RightContent'
@@ -7,10 +7,14 @@ import ShowNote from './components/ShowNote'
 function App() {
   let [title, setTitle] = useState("")
   let [text, setText] = useState("")
-  let [notes, setNotes] = useState([])
+  let [notes, setNotes] = useState(JSON.parse(localStorage.getItem('notes')) || [])
   let [hidden, setHidden] = useState(true)
   let [showTitle, setShowTitle] = useState("")
   let [showText, setShowText] = useState("")
+
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes))
+  }, [notes])
 
   const changeHandler = (e) => {
     if (e.target.tagName.toLowerCase() == "input")
@@ -26,7 +30,9 @@ function App() {
   }
 
   const deleteNote = (e) => {
-    setNotes((prev) => prev.filter((_, i) => i != e.target.id))
+    const updatedItem = notes.filter((_, i) => i != e.target.id)
+    setNotes(updatedItem)
+    localStorage.setItem('notes', JSON.stringify(updatedItem))
   }
 
   const showHidden = (e) => {
