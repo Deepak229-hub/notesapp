@@ -47,7 +47,7 @@ function App() {
       <Header />
 
       {hidden ? 
-      <div className='flex flex-row w-screen h-[90vh] z-10'>
+      <div className='flex flex-col lg:flex-row w-screen h-[90vh] z-10'>
         <LeftContent changeHandler={changeHandler} addNote={addNote} title={title} text={text} />
         <RightContent notes={notes} deleteNote={deleteNote} show={showHidden} />
       </div> : 
