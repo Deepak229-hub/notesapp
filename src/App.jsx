@@ -49,6 +49,7 @@ function App() {
       {hidden ? 
       <div className='flex flex-col lg:flex-row w-screen h-[90vh] z-10'>
         <LeftContent changeHandler={changeHandler} addNote={addNote} title={title} text={text} />
+        <hr className='lg:hidden' />
         <RightContent notes={notes} deleteNote={deleteNote} show={showHidden} />
       </div> : 
       <div className='h-[80vh] py-3'>
