@@ -13,9 +13,9 @@ function App() {
   let [showText, setShowText] = useState("")
 
   const changeHandler = (e) => {
-    if (e.target.tagName.toLowerCase() == "input" && e.target.value != "")
+    if (e.target.tagName.toLowerCase() == "input")
       setTitle(e.target.value)
-    if (e.target.tagName.toLowerCase() == "textarea" && e.target.value != "")
+    if (e.target.tagName.toLowerCase() == "textarea")
       setText(e.target.value)
   }
 
